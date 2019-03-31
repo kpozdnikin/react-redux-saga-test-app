@@ -1,13 +1,13 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "test-app-react-redux-saga-project",
   "version": "1.0.0",
-  "description": "A minimal react-redux boilerplate with all the best practices",
+  "description": "A project for testing my skills",
   "repository": {
     "type": "git",
-    "url": "git://github.com/flexdinesh/react-redux-boilerplate.git"
+    "url": "git://github.com:kpozdnikin/react-redux-saga-test-app.git"
   },
   "license": "MIT",
-  "author": "Dinesh Pandiyan",
+  "author": "Konstantin Pozdnikin",
   "scripts": {
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
@@ -23,8 +23,20 @@
     "pretest": "npm run test:clean && npm run lint",
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:clean": "rimraf ./coverage",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
+    "prettify": "prettier --write"
   },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:eslint:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  // "pre-commit": "lint:staged",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "chalk": "^2.3.2",
@@ -87,6 +99,8 @@
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
     "eslint-plugin-redux-saga": "0.9.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-config-prettier": "3.1.0",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
     "file-loader": "1.1.11",
@@ -110,7 +124,12 @@
     "webpack": "4.20.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "3.4.0",
-    "webpack-hot-middleware": "2.24.3"
+    "webpack-hot-middleware": "2.24.3",
+    "pre-commit": "1.2.2",
+    "prettier": "1.14.3",
+    "webpack-pwa-manifest": "3.7.1",
+    "image-webpack-loader": "4.4.0",
+    "offline-plugin": "5.0.5"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

@@ -18,7 +18,7 @@ import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
-import App from 'containers/App';
+import App from './containers/App';
 
 // Load the favicon
 /* eslint-disable import/no-webpack-loader-syntax */
@@ -26,7 +26,7 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 /* eslint-enable import/no-webpack-loader-syntax */
 
 // Import CSS reset and Global Styles
-import 'styles/theme.scss';
+import './styles/theme.scss';
 
 import configureStore from './configureStore';
 
@@ -35,11 +35,14 @@ import configureStore from './configureStore';
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-}, () => {
-  document.body.classList.remove('fontLoaded');
-});
+openSansObserver.load().then(
+  () => {
+    document.body.classList.add('fontLoaded');
+  },
+  () => {
+    document.body.classList.remove('fontLoaded');
+  },
+);
 
 // Create redux store with history
 const initialState = {};
@@ -56,7 +59,7 @@ const render = () => {
       </ConnectedRouter>
       {/* </LanguageProvider> */}
     </Provider>,
-    MOUNT_NODE
+    MOUNT_NODE,
   );
 };
 
@@ -71,3 +74,10 @@ if (module.hot) {
 }
 
 render();
+
+// Install ServiceWorker and AppCache in the end since
+// it's not most important operation and if main code fails,
+// we do not want it installed
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+}
