@@ -40,18 +40,25 @@ export function* getFlightsByUrl(action) {
   }
 }
 
+/**
+ * Load the flights, this action starts the request saga
+ * @param  {array} action
+ * @return {object} For better experience I need api description (params like limit, offset)
+ */
+
 export function* getFlights(action) {
-  const { limit = 0, offset = 5, filter } = action;
+  // const { limit = 0, offset = 5, filter } = action;
+  const { filter } = action;
   if (!filter || filter === 'cheap') {
     yield put({
       type: GET_FLIGHTS_BY_URL,
-      payload: `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
+      payload: 'https://obscure-caverns-79008.herokuapp.com/cheap', // `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
     });
   }
   if (!filter || filter === 'business') {
     yield put({
       type: GET_FLIGHTS_BY_URL,
-      payload: `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
+      payload: 'https://obscure-caverns-79008.herokuapp.com/business', // `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
     });
   }
 }
@@ -60,10 +67,6 @@ export function* getFlights(action) {
  * Root saga manages watcher lifecycle
  */
 export default function* flightsData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
   yield takeLatest(GET_FLIGHTS, getFlights);
   yield takeEvery(GET_FLIGHTS_BY_URL, getFlightsByUrl);
 }
