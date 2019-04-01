@@ -2,11 +2,13 @@ import { connect } from 'react-redux';
 import { getFlights } from '../../containers/HomePage/actions';
 import FlightsList from './FlightsList';
 
-function mapStateToProps(state, ownProps) {
-  // const globalState = state.get('global').toJS();
-  // const elementId = ownProps.id;
+function mapStateToProps(state) {
+  console.log('state', state.toJS());
   return {
-  
+    flights: state
+      .get('home')
+      .get('flights')
+      .toJS(),
   };
 }
 

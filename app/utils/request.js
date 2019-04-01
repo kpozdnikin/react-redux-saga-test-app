@@ -1,12 +1,10 @@
 import Axios from 'axios';
-/*
-Axios.defaults.headers.common['content-type'] =
-  'application/json;charset=UTF-8';
-Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-Axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET';
-Axios.defaults.headers.common['Access-Control-Allow-Headers'] =
-  'X-Requested-With, content-type, Authorization';
-*/
+// Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+// Axios.defaults.headers.common['Accept'] = 'application/json';
+// Axios.defaults.headers.common['content-type'] = 'application/json;charset=UTF-8';
+// Axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-Requested-With, content-type, Authorization';
+// Axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,POST,PUT,HEAD,DELETE,OPTIONS';
+
 /**
  * Parses the JSON returned by a network request
  *
@@ -18,7 +16,7 @@ function parseJSON(response) {
   if (response.status === 204 || response.status === 205) {
     return null;
   }
-  return response.json();
+  return response.data;
 }
 
 /**
@@ -29,6 +27,7 @@ function parseJSON(response) {
  * @return {object|undefined} Returns either the response, or throws an error
  */
 function checkStatus(response) {
+  console.log('response', response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   }

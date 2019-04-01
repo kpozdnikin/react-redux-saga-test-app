@@ -52,13 +52,13 @@ export function* getFlights(action) {
   if (!filter || filter === 'cheap') {
     yield put({
       type: GET_FLIGHTS_BY_URL,
-      payload: 'https://obscure-caverns-79008.herokuapp.com/cheap', // `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
+      payload: '/cheap', // `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
     });
   }
   if (!filter || filter === 'business') {
     yield put({
       type: GET_FLIGHTS_BY_URL,
-      payload: 'https://obscure-caverns-79008.herokuapp.com/business', // `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
+      payload: '/business', // `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
     });
   }
 }

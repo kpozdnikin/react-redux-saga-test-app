@@ -14,7 +14,11 @@ function homeReducer(state = initialState, action) {
     case GET_FLIGHTS_SUCCESS:
       console.log('GET_FLIGHTS_SUCCESS', action.payload);
       // Delete prefixed '@' from the github username
-      return state.set('username', action.name.replace(/@/gi, ''));
+      return state.set('flights', fromJS(action.payload));
+    case GET_FLIGHTS_ERROR:
+      console.log('GET_FLIGHTS_ERROR', action.payload);
+      // Delete prefixed '@' from the github username
+      return state.set('flights', fromJS([]));
     default:
       return state;
   }
