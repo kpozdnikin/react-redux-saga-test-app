@@ -27,6 +27,22 @@ export default class FormCreatePage extends React.Component {
           />
         </Helmet>
         <h1>Create New Flight</h1>
+        <section>
+          <h2>Try me!</h2>
+          {/* <form onSubmit={onSubmitForm}>
+            <label htmlFor="username">
+              Show Github repositories by
+              <span className="at-prefix">@</span>
+              <input
+                id="username"
+                type="text"
+                placeholder="flexdinesh"
+                value={username}
+                onChange={onChangeUsername}
+              />
+            </label>
+          </form> */}
+        </section>
       </div>
     );
   }

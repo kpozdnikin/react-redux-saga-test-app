@@ -6,7 +6,7 @@ import List from 'components/List';
 import LoadingIndicator from 'components/LoadingIndicator';
 import ReposList from '../index';
 
-describe('<ReposList />', () => {
+describe('<FlightsList />', () => {
   it('should render the loading indicator when its loading', () => {
     const renderedComponent = shallow(<ReposList loading />);
     expect(

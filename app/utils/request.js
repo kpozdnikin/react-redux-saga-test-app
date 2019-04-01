@@ -1,5 +1,12 @@
-import 'whatwg-fetch';
-
+import Axios from 'axios';
+/*
+Axios.defaults.headers.common['content-type'] =
+  'application/json;charset=UTF-8';
+Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+Axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET';
+Axios.defaults.headers.common['Access-Control-Allow-Headers'] =
+  'X-Requested-With, content-type, Authorization';
+*/
 /**
  * Parses the JSON returned by a network request
  *
@@ -39,8 +46,8 @@ function checkStatus(response) {
  *
  * @return {object}           The response data
  */
-export default function request(url, options) {
-  return fetch(url, options)
+export default function request(options) {
+  return Axios(options)
     .then(checkStatus)
     .then(parseJSON);
 }

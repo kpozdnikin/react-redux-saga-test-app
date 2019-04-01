@@ -1,40 +1,69 @@
 /**
- * Gets the repositories of the user from Github
+ * Flights saga
  */
 
 import {
-  call, put, select, takeLatest
+  call,
+  put,
+  // select,
+  takeLatest,
+  takeEvery,
 } from 'redux-saga/effects';
-import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
-import request from 'utils/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
+import request from '../../utils/request';
+import {
+  GET_FLIGHTS,
+  GET_FLIGHTS_SUCCESS,
+  GET_FLIGHTS_ERROR,
+  GET_FLIGHTS_BY_URL,
+} from './constants';
 
 /**
- * Github repos request/response handler
+ * Get flights from provider
  */
-export function* getRepos() {
-  // Select username from store
-  const username = yield select(makeSelectUsername());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
-
+export function* getFlightsByUrl(action) {
+  const params = {
+    method: 'get',
+    url: action.payload,
+  };
   try {
-    // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
+    const flights = yield call(request, params);
+    yield put({
+      type: GET_FLIGHTS_SUCCESS,
+      payload: flights,
+    });
   } catch (err) {
-    yield put(repoLoadingError(err));
+    yield put({
+      type: GET_FLIGHTS_ERROR,
+      payload: err,
+    });
+  }
+}
+
+export function* getFlights(action) {
+  const { limit = 0, offset = 5, filter } = action;
+  if (!filter || filter === 'cheap') {
+    yield put({
+      type: GET_FLIGHTS_BY_URL,
+      payload: `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
+    });
+  }
+  if (!filter || filter === 'business') {
+    yield put({
+      type: GET_FLIGHTS_BY_URL,
+      payload: `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
+    });
   }
 }
 
 /**
  * Root saga manages watcher lifecycle
  */
-export default function* githubData() {
+export default function* flightsData() {
   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
-  yield takeLatest(LOAD_REPOS, getRepos);
+  yield takeLatest(GET_FLIGHTS, getFlights);
+  yield takeEvery(GET_FLIGHTS_BY_URL, getFlightsByUrl);
 }
