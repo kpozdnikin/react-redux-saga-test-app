@@ -1,26 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Banner from './images/banner.jpg';
+import { NavLink } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Banner from './images/flights.jpeg';
 import './style.scss';
 
-class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      <div className="header">
-        <a href="https://twitter.com/flexdinesh">
-          <img src={Banner} alt="react-redux-boilerplate - Logo" />
-        </a>
-        <div className="nav-bar">
-          <Link className="router-link" to="/">
-            Home
-          </Link>
-          <Link className="router-link" to="/features">
-            Features
-          </Link>
-        </div>
-      </div>
-    );
-  }
-}
+const Header = () => (
+  <div className="header">
+    <a href="https://github.com/kpozdnikin/react-redux-saga-test-app">
+      <img src={Banner} alt="react-redux-boilerplate - Logo" />
+    </a>
+    <div className="nav-bar">
+      <Button
+        variant="outlined"
+        exact
+        activeClassName="active"
+        component={NavLink}
+        to="/"
+        className="link-button"
+      >
+        Home
+      </Button>
+      <Button
+        variant="outlined"
+        activeClassName="active"
+        component={NavLink}
+        to="/features"
+        className="link-button"
+      >
+        Add New Flight
+      </Button>
+    </div>
+  </div>
+);
 
 export default Header;

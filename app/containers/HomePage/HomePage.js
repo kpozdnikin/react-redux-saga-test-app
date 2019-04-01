@@ -23,26 +23,32 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 
   render() {
     const {
-      loading, error, repos, username, onChangeUsername, onSubmitForm
+      loading,
+      error,
+      repos,
+      username,
+      onChangeUsername,
+      onSubmitForm,
     } = this.props;
     const reposListProps = {
       loading,
       error,
-      repos
+      repos,
     };
 
     return (
       <article>
         <Helmet>
           <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <meta
+            name="description"
+            content="A React.js Boilerplate application homepage"
+          />
         </Helmet>
         <div className="home-page">
           <section className="centered">
-            <h2>Start your next react project in seconds</h2>
-            <p>
-              A minimal <i>React-Redux</i> boilerplate with all the best practices
-            </p>
+            <h2>Let`s fly together</h2>
+            <p>Frontend Technical Challenge Project</p>
           </section>
           <section>
             <h2>Try me!</h2>
@@ -73,5 +79,5 @@ HomePage.propTypes = {
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  onChangeUsername: PropTypes.func,
 };
