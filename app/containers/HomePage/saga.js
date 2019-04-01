@@ -22,15 +22,19 @@ import {
  * Get flights from provider
  */
 export function* getFlightsByUrl(action) {
+  console.log('getFlightsByUrl');
   const params = {
     method: 'get',
-    url: action.payload,
+    url: `/${action.payload}`,
   };
   try {
     const flights = yield call(request, params);
     yield put({
       type: GET_FLIGHTS_SUCCESS,
-      payload: flights,
+      payload: {
+        data: flights,
+        url: action.payload,
+      },
     });
   } catch (err) {
     yield put({
@@ -52,13 +56,13 @@ export function* getFlights(action) {
   if (!filter || filter === 'cheap') {
     yield put({
       type: GET_FLIGHTS_BY_URL,
-      payload: '/cheap', // `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
+      payload: 'cheap', // `https://obscure-caverns-79008.herokuapp.com/cheap?limit=${limit}&offset=${offset}`,
     });
   }
   if (!filter || filter === 'business') {
     yield put({
       type: GET_FLIGHTS_BY_URL,
-      payload: '/business', // `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
+      payload: 'business', // `https://obscure-caverns-79008.herokuapp.com/business?limit=${limit}&offset=${offset}`,
     });
   }
 }

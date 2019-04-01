@@ -10,7 +10,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from '../HomePage/Loadable';
+//import HomePage from '../HomePage/Loadable';
+import HomePage from '../HomePage';
 import FeaturePage from '../FormCreatePage/Loadable';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Header from '../../components/Header';

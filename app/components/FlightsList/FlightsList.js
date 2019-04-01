@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isEmpty } from 'lodash';
 import List from '../List';
-import ListItem from '../ListItem';
 import LoadingIndicator from '../LoadingIndicator';
-import RepoListItem from '../../containers/RepoListItem';
 
 class FlightsList extends React.Component {
   componentDidMount() {
@@ -15,16 +14,15 @@ class FlightsList extends React.Component {
     const { loading, flights, error } = this.props;
     console.log('flight list props', this.props);
     if (loading) {
-      return <List component={LoadingIndicator} />;
+      return <ul>{LoadingIndicator}</ul>;
     }
     if (error !== false) {
-      const ErrorComponent = () => (
-        <ListItem item="Something went wrong, please try again!" />
+      return (
+        <div className="error">Something went wrong, please try again!</div>
       );
-      return <List component={ErrorComponent} />;
     }
-    if (flights !== false) {
-      return <List items={flights} component={RepoListItem} />;
+    if (!isEmpty(flights)) {
+      return <List items={flights} />;
     }
     return null;
   }
@@ -32,8 +30,8 @@ class FlightsList extends React.Component {
 
 FlightsList.propTypes = {
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  flights: PropTypes.array.isRequired,
+  error: PropTypes.oneOfType(PropTypes.string, PropTypes.boolean),
+  flights: PropTypes.object.isRequired,
   getFlights: PropTypes.func.isRequired,
 };
 

@@ -15,7 +15,7 @@ const HomePage = () => (
       <title>Home Page</title>
       <meta
         name="description"
-        content="A React.js Boilerplate application homepage"
+        content="A React.js test application homepage"
       />
     </Helmet>
     <div className="home-page">

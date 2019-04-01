@@ -9,6 +9,7 @@ import {
  * @return {object} An action object with a type of GET_FLIGHTS
  */
 export function getFlights(limit, offset) {
+  console.log('getFlights');
   return {
     payload: { limit, offset },
     type: GET_FLIGHTS,

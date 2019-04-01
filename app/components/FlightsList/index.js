@@ -4,11 +4,11 @@ import FlightsList from './FlightsList';
 
 function mapStateToProps(state) {
   console.log('state', state.toJS());
+  const homeState = state.get('home');
   return {
-    flights: state
-      .get('home')
-      .get('flights')
-      .toJS(),
+    flights: homeState.get('flights').toJS(),
+    loading: homeState.get('loading'),
+    error: homeState.get('error'),
   };
 }
 

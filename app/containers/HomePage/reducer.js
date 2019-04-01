@@ -1,4 +1,4 @@
-import { fromJS, List } from 'immutable';
+import { fromJS, List, Map } from 'immutable';
 import {
   GET_FLIGHTS_SUCCESS,
   GET_FLIGHTS_ERROR,
@@ -6,19 +6,25 @@ import {
 
 // The initial state of the HomePage
 const initialState = fromJS({
-  flights: List(),
+  flights: Map({
+    cheap: List(),
+    business: List(),
+  }),
+  loading: false,
+  error: false,
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_FLIGHTS_SUCCESS:
+    case GET_FLIGHTS_SUCCESS: {
       console.log('GET_FLIGHTS_SUCCESS', action.payload);
-      // Delete prefixed '@' from the github username
-      return state.set('flights', fromJS(action.payload));
-    case GET_FLIGHTS_ERROR:
+      const { url, data = [] } = action.payload;
+      return state.setIn(['flights', url], fromJS(data));
+    }
+    case GET_FLIGHTS_ERROR: {
       console.log('GET_FLIGHTS_ERROR', action.payload);
-      // Delete prefixed '@' from the github username
-      return state.set('flights', fromJS([]));
+      return state.set('error', true);
+    }
     default:
       return state;
   }
