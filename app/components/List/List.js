@@ -16,7 +16,6 @@ import TableItem from './TableItem';
  * @return {object} flights list
  */
 const List = ({ items }) => {
-  console.log('items', items);
   const [orderBy, setOrderBy] = useState('id');
   const [order, setOrder] = useState('desc');
   function reorder(type) {
@@ -26,8 +25,9 @@ const List = ({ items }) => {
   /* function filter() {
   
   } */
+  // @todo ATTENTION!!! Sorting of string values is not the same as expected, need custom sorting for strings
   const listItems = sortBy(items.all, [order === 'desc' ? orderBy : -orderBy]);
-  console.log('listItems', listItems);
+  console.log('items', items, 'listItems', listItems);
   return (
     <Table>
       <TableHead>

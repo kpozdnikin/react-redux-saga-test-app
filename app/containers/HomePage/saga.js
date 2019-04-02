@@ -22,7 +22,6 @@ import {
  * Get flights from provider
  */
 export function* getFlightsByUrl(action) {
-  console.log('getFlightsByUrl');
   const params = {
     method: 'get',
     url: `/${action.payload}`,
