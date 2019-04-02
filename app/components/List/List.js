@@ -10,6 +10,29 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import './style.scss';
 import TableItem from './TableItem';
 
+const tableHeader = [
+  {
+    key: 'id',
+    name: 'ID',
+  },
+  {
+    key: 'arrival',
+    name: 'Arrival',
+  },
+  {
+    key: 'arrivalTime',
+    name: 'Arrival Time',
+  },
+  {
+    key: 'departure',
+    name: 'Departure',
+  },
+  {
+    key: 'departureTime',
+    name: 'Departure Time',
+  },
+];
+
 /**
  * List of flights as a functional component with hooks
  * @param  {object} items
@@ -32,73 +55,21 @@ const List = ({ items }) => {
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell
-            className="flight-cell"
-            sortDirection={orderBy === 'id' ? order : false}
-            align="right"
-          >
-            <TableSortLabel
-              active={orderBy === 'id'}
-              direction={order}
-              onClick={() => reorder('id')}
+          {tableHeader.map(headerItem => (
+            <TableCell
+              className="flight-cell"
+              sortDirection={orderBy === headerItem.key ? order : false}
+              align="right"
             >
-              id
-            </TableSortLabel>
-          </TableCell>
-          <TableCell
-            className="flight-cell"
-            sortDirection={orderBy === 'Arrival' ? order : false}
-            align="right"
-          >
-            <TableSortLabel
-              active={orderBy === 'arrival'}
-              direction={order}
-              onClick={() => reorder('arrival')}
-            >
-              Arrival
-            </TableSortLabel>
-          </TableCell>
-          <TableCell
-            className="flight-cell"
-            sortDirection={orderBy === 'arrivalTime' ? order : false}
-            align="right"
-          >
-            <TableSortLabel
-              active={orderBy === 'arrivalTime'}
-              direction={order}
-              onClick={() => reorder('arrivalTime')}
-            >
-              Arrival Time
-            </TableSortLabel>
-          </TableCell>
-          <TableCell
-            className="flight-cell"
-            sortDirection={orderBy === 'departure' ? order : false}
-            align="right"
-          >
-            <TableSortLabel
-              active={orderBy === 'departure'}
-              direction={order}
-              onClick={() => reorder('departure')}
-            >
-              Departure
-            </TableSortLabel>
-          </TableCell>
-          <TableCell
-            className="flight-cell"
-            sortDirection={
-              orderBy === 'departureTime' ? order : false
-            }
-            align="right"
-          >
-            <TableSortLabel
-              active={orderBy === 'departureTime'}
-              direction={order}
-              onClick={() => reorder('departureTime')}
-            >
-              Departure Time
-            </TableSortLabel>
-          </TableCell>
+              <TableSortLabel
+                active={orderBy === headerItem.key}
+                direction={order}
+                onClick={() => reorder(headerItem.key)}
+              >
+                {headerItem.name}
+              </TableSortLabel>
+            </TableCell>
+          ))}
         </TableRow>
       </TableHead>
       <TableBody>
