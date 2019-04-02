@@ -13,11 +13,13 @@ import createReducer from './reducers';
 const sagaMiddleware = createSagaMiddleware();
 
 function main(sources) {
-  const increment$ = sources.ACTION
-    .filter(action => action.type === 'INCREMENT_ASYNC').mapTo({ type: 'INCREMENT' });
+  const increment$ = sources.ACTION.filter(
+    action => action.type === 'INCREMENT_ASYNC',
+  ).mapTo({ type: 'INCREMENT' });
 
-  const decrement$ = sources.ACTION
-    .filter(action => action.type === 'DECREMENT_ASYNC').mapTo({ type: 'DECREMENT' });
+  const decrement$ = sources.ACTION.filter(
+    action => action.type === 'DECREMENT_ASYNC',
+  ).mapTo({ type: 'DECREMENT' });
 
   const both$ = xs
     .merge(increment$, decrement$)
@@ -35,10 +37,18 @@ function main(sources) {
 }
 
 export default function configureStore(initialState = {}, history) {
+  // Cycles middleware helps to handle side effects
+  const cycleMiddleware = createCycleMiddleware();
+  const { makeActionDriver } = cycleMiddleware;
+
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  const middlewares = [
+    sagaMiddleware,
+    routerMiddleware(history),
+    cycleMiddleware,
+  ];
 
   const enhancers = [applyMiddleware(...middlewares)];
 
@@ -52,14 +62,10 @@ export default function configureStore(initialState = {}, history) {
       : compose;
   /* eslint-enable */
 
-  const cycleMiddleware = createCycleMiddleware();
-  const { makeActionDriver } = cycleMiddleware;
-
   const store = createStore(
     createReducer(),
     fromJS(initialState),
     composeEnhancers(...enhancers),
-    applyMiddleware(cycleMiddleware),
   );
 
   run(main, {
