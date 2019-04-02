@@ -41,6 +41,7 @@ const tableHeader = [
 const List = ({ items }) => {
   const [orderBy, setOrderBy] = useState('id');
   const [order, setOrder] = useState('desc');
+
   function reorder(type) {
     setOrderBy(type);
     setOrder(order === 'desc' ? 'asc' : 'desc');
