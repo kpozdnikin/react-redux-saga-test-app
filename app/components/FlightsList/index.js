@@ -3,7 +3,6 @@ import { getFlights } from '../../containers/HomePage/actions';
 import FlightsList from './FlightsList';
 
 function mapStateToProps(state) {
-  console.log('state', state.toJS());
   const homeState = state.get('home');
   return {
     flights: homeState.get('flights').toJS(),

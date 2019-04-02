@@ -2,6 +2,7 @@ import { fromJS, List, Map } from 'immutable';
 import {
   GET_FLIGHTS_SUCCESS,
   GET_FLIGHTS_ERROR,
+  GET_FLIGHTS_BY_URL,
 } from './constants';
 
 // The initial state of the HomePage
@@ -16,14 +17,14 @@ const initialState = fromJS({
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
+    case GET_FLIGHTS_BY_URL:
+      return state.set('loading', true);
     case GET_FLIGHTS_SUCCESS: {
-      console.log('GET_FLIGHTS_SUCCESS', action.payload);
       const { url, data = [] } = action.payload;
-      return state.setIn(['flights', url], fromJS(data));
+      return state.set('loading', false).setIn(['flights', url], fromJS(data));
     }
     case GET_FLIGHTS_ERROR: {
-      console.log('GET_FLIGHTS_ERROR', action.payload);
-      return state.set('error', true);
+      return state.set('loading', false).set('error', true);
     }
     default:
       return state;

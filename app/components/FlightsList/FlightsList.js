@@ -14,17 +14,19 @@ class FlightsList extends React.Component {
     const { loading, flights, error } = this.props;
     console.log('flight list props', this.props);
     if (loading) {
-      return <ul>{LoadingIndicator}</ul>;
+      return LoadingIndicator();
     }
     if (error !== false) {
       return (
         <div className="error">Something went wrong, please try again!</div>
       );
     }
-    if (!isEmpty(flights)) {
-      return <List items={flights} />;
-    }
-    return null;
+    return (
+      <React.Fragment>
+        {loading && LoadingIndicator()}
+        {!isEmpty(flights) && <List items={flights} />}
+      </React.Fragment>
+    );
   }
 }
 
