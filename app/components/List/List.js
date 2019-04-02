@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import { isEmpty, sortBy } from 'lodash';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,8 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import './style.scss';
-import CheapItem from './CheapItem';
-import BusinessItem from './BusinessItem';
+import TableItem from './TableItem';
 
 /**
  * List of flights as a functional component with hooks
@@ -17,19 +16,25 @@ import BusinessItem from './BusinessItem';
  * @return {object} flights list
  */
 const List = ({ items }) => {
+  console.log('items', items);
   const [orderBy, setOrderBy] = useState('id');
   const [order, setOrder] = useState('desc');
   function reorder(type) {
     setOrderBy(type);
     setOrder(order === 'desc' ? 'asc' : 'desc');
   }
+  /* function filter() {
+  
+  } */
+  const listItems = sortBy(items.all, [order === 'desc' ? orderBy : -orderBy]);
+  console.log('listItems', listItems);
   return (
     <Table>
       <TableHead>
         <TableRow>
           <TableCell
             className="flight-cell"
-            sortDirection={orderBy === 'id' ? 'id' : false}
+            sortDirection={orderBy === 'id' ? order : false}
             align="right"
           >
             <TableSortLabel
@@ -42,7 +47,7 @@ const List = ({ items }) => {
           </TableCell>
           <TableCell
             className="flight-cell"
-            sortDirection={orderBy === 'Arrival' ? 'Arrival' : false}
+            sortDirection={orderBy === 'Arrival' ? order : false}
             align="right"
           >
             <TableSortLabel
@@ -55,7 +60,7 @@ const List = ({ items }) => {
           </TableCell>
           <TableCell
             className="flight-cell"
-            sortDirection={orderBy === 'arrivalTime' ? 'arrivalTime' : false}
+            sortDirection={orderBy === 'arrivalTime' ? order : false}
             align="right"
           >
             <TableSortLabel
@@ -68,7 +73,7 @@ const List = ({ items }) => {
           </TableCell>
           <TableCell
             className="flight-cell"
-            sortDirection={orderBy === 'departure' ? 'departure' : false}
+            sortDirection={orderBy === 'departure' ? order : false}
             align="right"
           >
             <TableSortLabel
@@ -81,7 +86,9 @@ const List = ({ items }) => {
           </TableCell>
           <TableCell
             className="flight-cell"
-            sortDirection={orderBy === 'departureTime' ? 'departureTime' : false}
+            sortDirection={
+              orderBy === 'departureTime' ? order : false
+            }
             align="right"
           >
             <TableSortLabel
@@ -95,14 +102,8 @@ const List = ({ items }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {!isEmpty(items.cheap) &&
-          items.cheap.map(elem => (
-            <CheapItem key={elem.id} item={elem} />
-          ))}
-        {!isEmpty(items.business) &&
-          items.business.map(elem => (
-            <BusinessItem key={elem.uuid} item={elem} />
-          ))}
+        {!isEmpty(listItems) &&
+          listItems.map(elem => <TableItem key={elem.id} item={elem} />)}
       </TableBody>
     </Table>
   );

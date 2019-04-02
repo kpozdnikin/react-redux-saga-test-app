@@ -12,7 +12,6 @@ class FlightsList extends React.Component {
 
   render() {
     const { loading, flights, error } = this.props;
-    console.log('flight list props', this.props);
     if (loading) {
       return LoadingIndicator();
     }
