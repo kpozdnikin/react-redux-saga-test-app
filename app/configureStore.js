@@ -2,39 +2,15 @@
  * Create the store with dynamic reducers
  */
 import { run } from '@cycle/run';
-import xs from 'xstream';
 import { createCycleMiddleware } from 'redux-cycles';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+import main from './main';
 
 const sagaMiddleware = createSagaMiddleware();
-
-function main(sources) {
-  const increment$ = sources.ACTION.filter(
-    action => action.type === 'INCREMENT_ASYNC',
-  ).mapTo({ type: 'INCREMENT' });
-
-  const decrement$ = sources.ACTION.filter(
-    action => action.type === 'DECREMENT_ASYNC',
-  ).mapTo({ type: 'DECREMENT' });
-
-  const both$ = xs
-    .merge(increment$, decrement$)
-    .map(d =>
-      xs
-        .periodic(500) // async
-        .take(1)
-        .mapTo(d),
-    )
-    .flatten();
-
-  return {
-    ACTION: both$,
-  };
-}
 
 export default function configureStore(initialState = {}, history) {
   // Cycles middleware helps to handle side effects
