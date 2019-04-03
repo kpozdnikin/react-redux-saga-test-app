@@ -7,8 +7,11 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
 import './style.scss';
 import TableItem from './TableItem';
+import TablePaginationActions from './TablePaginationActions';
 
 const tableHeader = [
   {
@@ -41,6 +44,7 @@ const tableHeader = [
 const List = ({ items }) => {
   const [orderBy, setOrderBy] = useState('id');
   const [order, setOrder] = useState('desc');
+  const [page, setPage] = useState(1);
 
   function reorder(type) {
     setOrderBy(type);
@@ -52,6 +56,9 @@ const List = ({ items }) => {
   // @todo ATTENTION!!! Sorting of string values is not the same as expected, need custom sorting for strings
   const listItems = sortBy(items.all, [order === 'desc' ? orderBy : -orderBy]);
   console.log('items', items, 'listItems', listItems);
+  if (isEmpty(listItems)) {
+    return <div />;
+  }
   return (
     <Table>
       <TableHead>
@@ -75,9 +82,26 @@ const List = ({ items }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {!isEmpty(listItems) &&
-          listItems.map(elem => <TableItem key={elem.id} item={elem} />)}
+        {listItems.map(elem => (
+          <TableItem key={elem.id} item={elem} />
+        ))}
       </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TablePagination
+            rowsPerPageOptions={[5]}
+            colSpan={2}
+            count={listItems.length}
+            rowsPerPage={5}
+            page={page}
+            SelectProps={{
+              native: true,
+            }}
+            onChangePage={setPage}
+            ActionsComponent={TablePaginationActions}
+          />
+        </TableRow>
+      </TableFooter>
     </Table>
   );
 };
