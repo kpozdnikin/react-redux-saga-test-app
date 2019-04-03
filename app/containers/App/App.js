@@ -12,7 +12,8 @@ import { Switch, Route } from 'react-router-dom';
 
 //import HomePage from '../HomePage/Loadable';
 import HomePage from '../HomePage';
-import FeaturePage from '../FormCreatePage/Loadable';
+// import FormCreatePage from '../FormCreatePage/Loadable';
+import FormCreatePage from '../FormCreatePage';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -29,7 +30,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/features" component={FeaturePage} />
+      <Route exact path="/features" component={FormCreatePage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
     <Footer />
