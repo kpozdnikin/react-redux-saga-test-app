@@ -82,7 +82,7 @@ const List = ({ items }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {listItems.map(elem => (
+        {listItems.slice(page * 5, page * 5 + 5).map(elem => (
           <TableItem key={elem.id} item={elem} />
         ))}
       </TableBody>
@@ -90,7 +90,7 @@ const List = ({ items }) => {
         <TableRow>
           <TablePagination
             rowsPerPageOptions={[5]}
-            colSpan={2}
+            colSpan={5}
             count={listItems.length}
             rowsPerPage={5}
             page={page}

@@ -12,22 +12,25 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
  * @return {object} flights list
  */
 
-const TablePaginationActions = ({ page, count, rowsPerPage, onChangePage }) => {
-  
-  function handleFirstPageButtonClick(event) {
-    onChangePage(event, 0);
+const TablePaginationActions = (props) => {
+  const { page, count, rowsPerPage, onChangePage } = props;
+
+  console.log('props', props);
+
+  function handleFirstPageButtonClick() {
+    onChangePage(0);
   }
 
-  function handleBackButtonClick(event) {
-    onChangePage(event, page - 1);
+  function handleBackButtonClick() {
+    onChangePage(page - 1);
   }
 
-  function handleNextButtonClick(event) {
-    onChangePage(event, page + 1);
+  function handleNextButtonClick() {
+    onChangePage(page + 1);
   }
 
-  function handleLastPageButtonClick(event) {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  function handleLastPageButtonClick() {
+    onChangePage(Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   }
 
   return (
