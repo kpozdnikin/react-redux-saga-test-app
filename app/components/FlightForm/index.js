@@ -1,9 +1,9 @@
-import { reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form/immutable';
 import FlightForm from './FlightForm';
 
-FlightForm = reduxForm({
+const WrappedForm = reduxForm({
   // a unique name for the form
   form: 'flightForm',
 })(FlightForm);
 
-export default FlightForm;
+export default WrappedForm;
