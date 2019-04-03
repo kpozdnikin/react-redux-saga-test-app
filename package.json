@@ -1,7 +1,7 @@
 {
   "name": "test-app-react-redux-saga-project",
   "version": "1.0.0",
-  "description": "A project for testing my skills",
+  "description": "A project for testing",
   "repository": {
     "type": "git",
     "url": "git://github.com:kpozdnikin/react-redux-saga-test-app.git"
