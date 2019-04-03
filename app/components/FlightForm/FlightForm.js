@@ -12,6 +12,7 @@ arrival: Text,
 arrivalTime: moment().format('MM.DD.YY hh:mm'),
 departure: Text,
 departureTime: moment().format('MM.DD.YY hh:mm'),
+type: business/cheap
 */
 
 const FlightForm = props => {

@@ -4,7 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import RenderFromHelper from '../RenderFromHelper';
 
-const RenderSelectField = (props) => {
+const RenderSelectField = props => {
   const {
     input,
     label,
