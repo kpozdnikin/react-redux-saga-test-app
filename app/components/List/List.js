@@ -58,6 +58,7 @@ const List = ({ items }) => {
         <TableRow>
           {tableHeader.map(headerItem => (
             <TableCell
+              key={headerItem.key}
               className="flight-cell"
               sortDirection={orderBy === headerItem.key ? order : false}
               align="right"
