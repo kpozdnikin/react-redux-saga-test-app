@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { getFlights } from '../../containers/HomePage/actions';
 import FlightsList from './FlightsList';
 
