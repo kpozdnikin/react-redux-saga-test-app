@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
@@ -8,35 +8,35 @@ import {
   DatePicker,
 } from 'material-ui-pickers';
 
-const RenderTextField = props => {
-  const { handleDateChange, selectedDate } = props;
+const RenderDateTimeField = props => {
+  const { input: { value, onChange }} = props;
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container className="test-app-grid" justify="space-around">
         <DatePicker
           margin="normal"
           label="Date picker"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={value}
+          onChange={onChange}
         />
         <TimePicker
           margin="normal"
           label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={value}
+          onChange={onChange}
         />
       </Grid>
     </MuiPickersUtilsProvider>
   );
 };
 
-RenderTextField.propTypes = {
-  handleDateChange: PropTypes.func.isRequired,
-  selectedDate: PropTypes.string,
+RenderDateTimeField.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };
 
-RenderTextField.defaultProps = {
+RenderDateTimeField.defaultProps = {
   selectedDate: null,
 };
 
-export default RenderTextField;
+export default RenderDateTimeField;

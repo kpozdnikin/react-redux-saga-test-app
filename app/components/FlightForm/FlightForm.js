@@ -59,7 +59,7 @@ const FlightForm = props => {
           <option value="business">Business</option>
         </Field>
       </Grid>
-      <Grid container className="test-app-grid" justify="space-around">
+      <Grid container className="test-app-grid buttons-row" justify="space-around">
         <Button type="submit" variant="contained" color="primary" disabled={pristine || submitting} >
           Submit
         </Button>

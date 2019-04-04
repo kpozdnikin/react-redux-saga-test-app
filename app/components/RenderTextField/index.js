@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-const RenderTextField = ({ label, input, meta: { touched, invalid, error }, ...custom}) => (
+const RenderTextField = ({ label, input, meta: { touched, invalid, error }, ...custom }) => (
   <TextField
     label={label}
     placeholder={label}

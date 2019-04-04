@@ -27,9 +27,13 @@ label {
 
 .test-app-form {
   width: 370px !important;
-  margin: 30px auto;
+  margin: 0 auto;
 
   .test-app-field {
     width: 100%;
+  }
+
+  .buttons-row {
+    margin: 30px 0;
   }
 }
