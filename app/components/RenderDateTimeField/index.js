@@ -10,19 +10,20 @@ import {
 
 const RenderDateTimeField = props => {
   const { input: { value, onChange }} = props;
+  console.log('props', props);
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container className="test-app-grid" justify="space-around">
         <DatePicker
           margin="normal"
           label="Date picker"
-          value={value}
+          value={value || null}
           onChange={onChange}
         />
         <TimePicker
           margin="normal"
           label="Time picker"
-          value={value}
+          value={value || null}
           onChange={onChange}
         />
       </Grid>
@@ -31,12 +32,16 @@ const RenderDateTimeField = props => {
 };
 
 RenderDateTimeField.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  input: PropTypes.shape({
+    value: PropTypes.date,
+    onChange: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 RenderDateTimeField.defaultProps = {
-  selectedDate: null,
+  input: PropTypes.shape({
+    value: PropTypes.null,
+  }),
 };
 
 export default RenderDateTimeField;
