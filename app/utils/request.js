@@ -1,9 +1,4 @@
 import Axios from 'axios';
-// Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-// Axios.defaults.headers.common['Accept'] = 'application/json';
-// Axios.defaults.headers.common['content-type'] = 'application/json;charset=UTF-8';
-// Axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-Requested-With, content-type, Authorization';
-// Axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,POST,PUT,HEAD,DELETE,OPTIONS';
 
 /**
  * Parses the JSON returned by a network request

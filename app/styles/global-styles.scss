@@ -23,3 +23,13 @@ label {
   font-family: Georgia, Times, 'Times New Roman', serif;
   line-height: 1.5em;
 }
+
+
+.test-app-form {
+  width: 370px !important;
+  margin: 30px auto;
+
+  .test-app-field {
+    width: 100%;
+  }
+}

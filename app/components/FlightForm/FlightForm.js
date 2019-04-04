@@ -2,6 +2,7 @@ import React from 'react';
 import { Field } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import RenderTextField from '../RenderTextField';
 import RenderSelectField from '../RenderSelectField';
 import RenderDateTimeField from '../RenderDateTimeField';
@@ -21,9 +22,14 @@ const FlightForm = props => {
   const submitting = false;
   const reset = () => {};
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="test-app-form">
       <Grid container className="test-app-grid" justify="space-around">
-        <Field name="arrival" component={RenderTextField} label="Arrival" />
+        <Field
+          className="test-app-field"
+          name="arrival"
+          component={RenderTextField}
+          label="Arrival"
+        />
       </Grid>
       <Grid container className="test-app-grid" justify="space-around">
         <Field
@@ -32,9 +38,9 @@ const FlightForm = props => {
           label="Arrival Time"
         />
       </Grid>
-      <div>
-        <Field name="departure" component={RenderTextField} label="Departure" />
-      </div>
+      <Grid container className="test-app-grid" justify="space-around">
+        <Field className="test-app-field" name="departure" component={RenderTextField} label="Departure" />
+      </Grid>
       <Grid container className="test-app-grid" justify="space-around">
         <Field
           name="departureTime"
@@ -54,12 +60,12 @@ const FlightForm = props => {
         </Field>
       </Grid>
       <Grid container className="test-app-grid" justify="space-around">
-        <button type="submit" disabled={pristine || submitting}>
+        <Button type="submit" variant="contained" color="primary" disabled={pristine || submitting} >
           Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
+        </Button>
+        <Button type="button" variant="contained" color="secondary" disabled={pristine || submitting} onClick={reset}>
           Clear Values
-        </button>
+        </Button>
       </Grid>
     </form>
   );

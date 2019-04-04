@@ -10,7 +10,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
-//import HomePage from '../HomePage/Loadable';
+// import HomePage from '../HomePage/Loadable';
 import HomePage from '../HomePage';
 // import FormCreatePage from '../FormCreatePage/Loadable';
 import FormCreatePage from '../FormCreatePage';

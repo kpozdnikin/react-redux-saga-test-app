@@ -13,7 +13,7 @@ const RenderSelectField = props => {
     ...custom
   } = props;
   return (
-    <FormControl error={touched && error}>
+    <FormControl error={touched && error} className="test-app-field">
       <InputLabel htmlFor="age-native-simple">{label}</InputLabel>
       <Select
         native
