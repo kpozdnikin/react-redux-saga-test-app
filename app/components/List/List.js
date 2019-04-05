@@ -60,21 +60,19 @@ const List = ({ items }) => {
 
   let listItems = items.all;
   if (searchText) {
-    listItems = filter(listItems, item => {
-      return (
+    listItems = filter(
+      listItems,
+      item =>
         item.id.toString().indexOf(searchText) !== -1 ||
         item.arrival.indexOf(searchText) !== -1 ||
         item.arrivalTime.indexOf(searchText) !== -1 ||
         item.departure.indexOf(searchText) !== -1 ||
-        item.departureTime.indexOf(searchText) !== -1
-      );
-    });
+        item.departureTime.indexOf(searchText) !== -1,
+    );
   }
+
   // @todo ATTENTION!!! Sorting of string values is not the same as expected, need custom sorting for strings
-  listItems = sortBy(
-    listItems,
-    [order === 'desc' ? orderBy : -orderBy]
-  );
+  listItems = sortBy(listItems, [order === 'desc' ? orderBy : -orderBy]);
 
   return (
     <React.Fragment>
@@ -83,10 +81,10 @@ const List = ({ items }) => {
         label="filter"
         className="test-search"
         value={searchText}
-        onChange={(e) => search(e.target.value)}
+        onChange={e => search(e.target.value)}
         margin="normal"
       />
-      {!isEmpty(listItems) &&
+      {!isEmpty(listItems) && (
         <Table>
           <TableHead>
             <TableRow>
@@ -130,7 +128,7 @@ const List = ({ items }) => {
             </TableRow>
           </TableFooter>
         </Table>
-      }
+      )}
     </React.Fragment>
   );
 };

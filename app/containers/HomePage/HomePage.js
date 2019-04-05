@@ -13,10 +13,7 @@ const HomePage = () => (
   <article>
     <Helmet>
       <title>Home Page</title>
-      <meta
-        name="description"
-        content="A React.js test application homepage"
-      />
+      <meta name="description" content="A React.js test application homepage" />
     </Helmet>
     <div className="home-page">
       <section className="centered">

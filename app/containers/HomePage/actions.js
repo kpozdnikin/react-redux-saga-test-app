@@ -19,7 +19,6 @@ export function getFlights(limit, offset) {
  * @return {object} An action object with a type of SUMBIT_NEW_FLIGHT
  */
 export function submit(data) {
-  console.log('data', data, typeof data);
   return {
     payload: data,
     type: SUMBIT_NEW_FLIGHT,

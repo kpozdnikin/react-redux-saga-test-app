@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -15,3 +16,4 @@ describe('<FormCreatePage />', () => {
     expect(inst.shouldComponentUpdate()).toBe(false);
   });
 });
+*/
