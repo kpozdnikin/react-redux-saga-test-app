@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field } from 'redux-form/immutable';
-import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
