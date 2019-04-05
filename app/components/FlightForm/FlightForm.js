@@ -9,7 +9,7 @@ import RenderSelectField from '../RenderSelectField';
 import RenderDateTimeField from '../RenderDateTimeField';
 
 const FlightForm = props => {
-  const { handleSubmit, reset, initialValues } = props;
+  const { handleSubmit, reset } = props;
   const pristine = false;
   const submitting = false;
   return (
@@ -92,7 +92,6 @@ const FlightForm = props => {
 FlightForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  initialValues: PropTypes.instanceOf(Map),
 };
 
 export default FlightForm;
