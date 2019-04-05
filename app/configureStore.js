@@ -5,10 +5,11 @@ import { run } from '@cycle/run';
 import { createCycleMiddleware } from 'redux-cycles';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
-import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'connected-react-router/immutable';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import main from './main';
+import homeSaga from './containers/HomePage/saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -39,7 +40,7 @@ export default function configureStore(initialState = {}, history) {
   /* eslint-enable */
 
   const store = createStore(
-    createReducer(),
+    createReducer(history),
     fromJS(initialState),
     composeEnhancers(...enhancers),
   );
@@ -52,15 +53,7 @@ export default function configureStore(initialState = {}, history) {
   store.runSaga = sagaMiddleware.run;
   store.injectedReducers = {}; // Reducer registry
   store.injectedSagas = {}; // Saga registry
-
-  // Make reducers hot reloadable, see http://mxs.is/googmo
-  /* istanbul ignore next */
-  if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      store.replaceReducer(createReducer(store.injectedReducers));
-      store.dispatch({ type: '@@REDUCER_INJECTED' });
-    });
-  }
+  sagaMiddleware.run(homeSaga);
 
   return store;
 }

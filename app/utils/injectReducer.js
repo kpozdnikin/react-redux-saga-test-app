@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-
 import getInjectors from './reducerInjectors';
 
 /**
@@ -18,7 +17,7 @@ export default ({ key, reducer }) => (WrappedComponent) => {
     static displayName = `withReducer(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
     static contextTypes = {
-      store: PropTypes.object.isRequired
+      store: PropTypes.object.isRequired,
     };
 
     injectors = getInjectors(this.context.store); // eslint-disable-line react/destructuring-assignment

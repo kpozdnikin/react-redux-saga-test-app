@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form/immutable';
+import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -7,20 +8,10 @@ import RenderTextField from '../RenderTextField';
 import RenderSelectField from '../RenderSelectField';
 import RenderDateTimeField from '../RenderDateTimeField';
 
-/*
-id: text,
-arrival: Text,
-arrivalTime: moment().format('MM.DD.YY hh:mm'),
-departure: Text,
-departureTime: moment().format('MM.DD.YY hh:mm'),
-type: business/cheap
-*/
-
 const FlightForm = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, reset, initialValues } = props;
   const pristine = false;
   const submitting = false;
-  const reset = () => {};
   return (
     <form onSubmit={handleSubmit} className="test-app-form">
       <Grid container className="test-app-grid" justify="space-around">
@@ -29,6 +20,7 @@ const FlightForm = props => {
           name="arrival"
           component={RenderTextField}
           label="Arrival"
+          required
         />
       </Grid>
       <Grid container className="test-app-grid" justify="space-around">
@@ -36,16 +28,24 @@ const FlightForm = props => {
           name="arrivalTime"
           component={RenderDateTimeField}
           label="Arrival Time"
+          required
         />
       </Grid>
       <Grid container className="test-app-grid" justify="space-around">
-        <Field className="test-app-field" name="departure" component={RenderTextField} label="Departure" />
+        <Field
+          className="test-app-field"
+          name="departure"
+          component={RenderTextField}
+          label="Departure"
+          required
+        />
       </Grid>
       <Grid container className="test-app-grid" justify="space-around">
         <Field
           name="departureTime"
           component={RenderDateTimeField}
           label="Departure Time"
+          required
         />
       </Grid>
       <Grid container className="test-app-grid" justify="space-around">
@@ -53,17 +53,35 @@ const FlightForm = props => {
           name="flightType"
           component={RenderSelectField}
           label="Type of flight"
+          required
         >
           <option value="" />
           <option value="cheap">Cheap</option>
           <option value="business">Business</option>
         </Field>
       </Grid>
-      <Grid container className="test-app-grid buttons-row" justify="space-around">
-        <Button type="submit" variant="contained" color="primary" disabled={pristine || submitting} >
+      <Grid
+        container
+        className="test-app-grid buttons-row"
+        justify="space-around"
+      >
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          required
+          disabled={pristine || submitting}
+        >
           Submit
         </Button>
-        <Button type="button" variant="contained" color="secondary" disabled={pristine || submitting} onClick={reset}>
+        <Button
+          type="button"
+          variant="contained"
+          color="secondary"
+          required
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
           Clear Values
         </Button>
       </Grid>
@@ -73,6 +91,8 @@ const FlightForm = props => {
 
 FlightForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  initialValues: PropTypes.instanceOf(Map),
 };
 
 export default FlightForm;

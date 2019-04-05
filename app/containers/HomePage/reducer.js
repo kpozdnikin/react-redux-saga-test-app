@@ -1,9 +1,11 @@
 import { fromJS, List, Map } from 'immutable';
+import hash from 'object-hash';
 import moment from 'moment';
 import {
   GET_FLIGHTS_SUCCESS,
   GET_FLIGHTS_ERROR,
   GET_FLIGHTS_BY_URL,
+  SUMBIT_NEW_FLIGHT,
 } from './constants';
 
 // The initial state of the HomePage
@@ -13,6 +15,14 @@ const initialState = fromJS({
     business: List(),
     custom: List(),
     all: List(),
+  }),
+  newFlight: Map({
+    id: null,
+    arrival: null,
+    arrivalTime: null,
+    departure: null,
+    departureTime: null,
+    flightType: null,
   }),
   loading: false,
   error: false,
@@ -31,6 +41,23 @@ function homeReducer(state = initialState, action) {
     }
     case GET_FLIGHTS_ERROR: {
       return state.set('loading', false).set('error', true);
+    }
+    case SUMBIT_NEW_FLIGHT: {
+      const newFlight = {
+        id: hash(action.payload),
+        arrival: action.payload.arrival,
+        arrivalTime: moment(action.payload.arrivalTime).format(
+          'MM.DD.YY hh:mm',
+        ),
+        departure: action.payload.departure,
+        departureTime: moment(action.payload.departureTime).format(
+          'MM.DD.YY hh:mm',
+        ),
+        flightType: action.payload.flightType,
+      };
+      const customFlights = state.getIn(['flights', 'custom']).toJS();
+      customFlights.push(newFlight);
+      return state.setIn(['flights', 'custom'], fromJS(customFlights));
     }
     default:
       return state;
@@ -51,6 +78,7 @@ function concatFlights(flights) {
       arrivalTime: moment(cheapFlight.arrivalTime).format('MM.DD.YY hh:mm'),
       departure: cheapFlight.departure,
       departureTime: moment(cheapFlight.departureTime).format('MM.DD.YY hh:mm'),
+      flightType: 'cheap',
     });
   });
   flights.business.forEach(businesFlight => {
@@ -60,6 +88,7 @@ function concatFlights(flights) {
       arrivalTime: moment(businesFlight.arrival).format('MM.DD.YY hh:mm'),
       departure: businesFlight.flight.split('->')[1],
       departureTime: moment(businesFlight.departure).format('MM.DD.YY hh:mm'),
+      flightType: 'business',
     });
   });
   return all.concat(flights.custom);

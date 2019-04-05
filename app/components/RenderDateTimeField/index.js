@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
@@ -9,8 +9,9 @@ import {
 } from 'material-ui-pickers';
 
 const RenderDateTimeField = props => {
-  const { input: { value, onChange }} = props;
-  console.log('props', props);
+  const {
+    input: { value, onChange },
+  } = props;
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container className="test-app-grid" justify="space-around">
@@ -33,15 +34,9 @@ const RenderDateTimeField = props => {
 
 RenderDateTimeField.propTypes = {
   input: PropTypes.shape({
-    value: PropTypes.date,
+    value: PropTypes.instanceOf(Date),
     onChange: PropTypes.func.isRequired,
   }).isRequired,
-};
-
-RenderDateTimeField.defaultProps = {
-  input: PropTypes.shape({
-    value: PropTypes.null,
-  }),
 };
 
 export default RenderDateTimeField;

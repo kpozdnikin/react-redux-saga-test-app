@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
@@ -7,15 +7,13 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 /**
- * List of flights as a functional component with hooks
- * @param  {object} items
- * @return {object} flights list
+ * Pagination component
+ * @param  {object} props
+ * @return {object} pagination component
  */
 
-const TablePaginationActions = (props) => {
+const TablePaginationActions = props => {
   const { page, count, rowsPerPage, onChangePage } = props;
-
-  console.log('props', props);
 
   function handleFirstPageButtonClick() {
     onChangePage(0);
@@ -65,6 +63,13 @@ const TablePaginationActions = (props) => {
       </IconButton>
     </div>
   );
+};
+
+TablePaginationActions.propTypes = {
+  page: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
 };
 
 export default TablePaginationActions;
