@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -23,3 +24,4 @@ describe('<List />', () => {
     expect(renderedComponent.find(component).at(1).prop('item')).toBe(items[1]);
   });
 });
+*/

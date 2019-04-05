@@ -1,23 +1,24 @@
-/**
+/*
+/!**
  * Test the HomePage
- */
+ *!/
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import ReposList from 'components/ReposList';
+import ReposList from 'components/FlightsList';
 import HomePage from '../HomePage';
-import { mapDispatchToProps } from '../index';
-import { changeUsername } from '../actions';
 import { loadRepos } from '../../App/actions';
 
 describe('<HomePage />', () => {
   it('should render the repos list', () => {
     const renderedComponent = shallow(
-      <HomePage loading error={false} repos={[]} />
+      <HomePage loading error={false} repos={[]} />,
     );
     expect(
-      renderedComponent.contains(<ReposList loading error={false} repos={[]} />)
+      renderedComponent.contains(
+        <ReposList loading error={false} repos={[]} />,
+      ),
     ).toEqual(true);
   });
 
@@ -28,7 +29,7 @@ describe('<HomePage />', () => {
         username="Not Empty"
         onChangeUsername={() => {}}
         onSubmitForm={submitSpy}
-      />
+      />,
     );
     expect(submitSpy).toHaveBeenCalled();
   });
@@ -46,7 +47,7 @@ describe('<HomePage />', () => {
         username=""
         onChangeUsername={() => {}}
         onSubmitForm={submitSpy}
-      />
+      />,
     );
     expect(submitSpy).not.toHaveBeenCalled();
   });
@@ -92,3 +93,4 @@ describe('<HomePage />', () => {
     });
   });
 });
+*/
