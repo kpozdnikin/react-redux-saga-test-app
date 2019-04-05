@@ -1,10 +1,10 @@
 import { reduxForm } from 'redux-form/immutable';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import FlightForm from './FlightForm';
 import { reset, submit } from '../../containers/HomePage/actions';
 
 const WrappedForm = reduxForm({
-  // a unique name for the form
   form: 'flightForm',
 })(FlightForm);
 
@@ -29,4 +29,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(WrappedForm);
+)(withRouter(WrappedForm));

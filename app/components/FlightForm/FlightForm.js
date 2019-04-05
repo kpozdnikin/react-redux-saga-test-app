@@ -8,11 +8,17 @@ import RenderSelectField from '../RenderSelectField';
 import RenderDateTimeField from '../RenderDateTimeField';
 
 const FlightForm = props => {
-  const { handleSubmit, reset } = props;
+  const { handleSubmit, reset, history } = props;
   const pristine = false;
   const submitting = false;
+
+  function onSubmit(event) {
+    handleSubmit(event);
+    history.push('/');
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="test-app-form">
+    <form onSubmit={onSubmit} className="test-app-form">
       <Grid container className="test-app-grid" justify="space-around">
         <Field
           className="test-app-field"
@@ -91,6 +97,7 @@ const FlightForm = props => {
 FlightForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
+  history: PropTypes.shape.isRequired,
 };
 
 export default FlightForm;
