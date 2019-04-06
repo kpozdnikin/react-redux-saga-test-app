@@ -9,7 +9,10 @@ const Footer = () => (
       <span role="img" aria-label="heart-emoji">
         ❤️
       </span>
-      by <a href="https://twitter.com/flexdinesh">Pozdnikin Konstantin</a>
+      by
+      <a href="https://www.linkedin.com/in/konstantin-pozdnikin-90929a111/">
+        Pozdnikin Konstantin
+      </a>
     </section>
   </footer>
 );

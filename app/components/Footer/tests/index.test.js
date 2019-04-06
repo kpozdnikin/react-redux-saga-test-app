@@ -1,22 +1,43 @@
-/*
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, configure } from 'enzyme';
+import { fromJS } from 'immutable';
+import Adapter from 'enzyme-adapter-react-16';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { act } from 'react-dom/test-utils';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { initialState as homeReducerState } from '../../../containers/HomePage/reducer';
+import Footer from '..';
 
-import Footer from '../index';
+configure({ adapter: new Adapter() });
 
 describe('<Footer />', () => {
-  it('should render the copyright notice', () => {
-    const renderedComponent = shallow(<Footer />);
-    expect(
-      renderedComponent.contains(
-        <section>This project is licensed under the MIT license.</section>
-      )
-    ).toBe(true);
+  const middlewares = [];
+  const mockStore = configureStore(middlewares);
+  let store;
+
+  beforeAll(() => {
+    const initialState = fromJS({
+      home: homeReducerState,
+    });
+    store = mockStore(initialState);
   });
 
-  it('should render the credits', () => {
-    const renderedComponent = shallow(<Footer />);
-    expect(renderedComponent.text()).toContain('Dinesh Pandiyan');
+  it('can render Footer', () => {
+    // Test first render and effect
+    const history = createBrowserHistory();
+    act(() => {
+      const renderedComponent = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <Footer />
+          </Router>
+        </Provider>,
+      );
+      expect(renderedComponent.find('footer').length).toBe(1);
+      expect(renderedComponent.find('a').length).toBe(1);
+      expect(renderedComponent.find('a').text()).toBe('Pozdnikin Konstantin');
+    });
   });
 });
-*/
