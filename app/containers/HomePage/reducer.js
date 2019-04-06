@@ -9,7 +9,7 @@ import {
 } from './constants';
 
 // The initial state of the HomePage
-const initialState = fromJS({
+export const initialState = fromJS({
   flights: Map({
     cheap: List(),
     business: List(),
