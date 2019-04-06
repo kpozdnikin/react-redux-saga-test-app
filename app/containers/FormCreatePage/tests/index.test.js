@@ -13,7 +13,7 @@ import FormCreatePage from '../index';
 
 configure({ adapter: new Adapter() });
 
-describe('<List />', () => {
+describe('<FormCreatePage />', () => {
   const middlewares = [];
   const mockStore = configureStore(middlewares);
   let store;
@@ -25,7 +25,7 @@ describe('<List />', () => {
     store = mockStore(initialState);
   });
 
-  it('can render and update a counter', () => {
+  it('can render FormCreatePage', () => {
     // Test first render and effect
     const history = createBrowserHistory();
     act(() => {

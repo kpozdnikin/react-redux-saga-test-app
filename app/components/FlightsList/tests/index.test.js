@@ -1,56 +1,75 @@
-/*
-import { shallow, mount } from 'enzyme';
 import React from 'react';
+import { mount, configure } from 'enzyme';
+import { fromJS } from 'immutable';
+import Adapter from 'enzyme-adapter-react-16';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { act } from 'react-dom/test-utils';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { initialState as homeReducerState } from '../../../containers/HomePage/reducer';
+import List from '../../List';
+import mockFlights from '../../../tests/flights';
+import FlightsList from '../FlightsList';
 
-import RepoListItem from 'containers/RepoListItem';
-import List from 'components/List';
-import LoadingIndicator from 'components/LoadingIndicator';
-import ReposList from '../index';
+configure({ adapter: new Adapter() });
 
 describe('<FlightsList />', () => {
-  it('should render the loading indicator when its loading', () => {
-    const renderedComponent = shallow(<ReposList loading />);
-    expect(
-      renderedComponent.contains(<List component={LoadingIndicator} />)
-    ).toEqual(true);
+  const middlewares = [];
+  const mockStore = configureStore(middlewares);
+  let store;
+
+  beforeAll(() => {
+    const initialState = fromJS({
+      home: homeReducerState,
+    });
+    store = mockStore(initialState);
   });
 
-  it('should render an error if loading failed', () => {
-    const renderedComponent = mount(
-      <ReposList loading={false} error={{ message: 'Loading failed!' }} />
-    );
-    expect(renderedComponent.text()).toMatch(/Something went wrong/);
+  it('can render empty FlightsList with loader', () => {
+    // Test first render and effect
+    const history = createBrowserHistory();
+    const error = '';
+    const loading = true;
+    const flights = {};
+    act(() => {
+      const renderedComponent = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <FlightsList
+              loading={loading}
+              flights={flights}
+              error={error}
+              getFlights={jest.fn()}
+            />
+          </Router>
+        </Provider>,
+      );
+      expect(renderedComponent.find(List).length).toBe(0);
+      expect(renderedComponent.find('.loading-indicator').length).toBe(1);
+    });
   });
 
-  it('should render the repositories if loading was successful', () => {
-    const repos = [
-      {
-        owner: {
-          login: 'flexdinesh'
-        },
-        html_url: 'https://github.com/flexdinesh/react-redux-boilerplate',
-        name: 'react-redux-boilerplate',
-        open_issues_count: 20,
-        full_name: 'flexdinesh/react-redux-boilerplate'
-      }
-    ];
-    const renderedComponent = shallow(
-      <ReposList repos={repos} error={false} />
-    );
-
-    expect(
-      renderedComponent.contains(
-        <List items={repos} component={RepoListItem} />
-      )
-    ).toEqual(true);
-  });
-
-  it('should not render anything if nothing interesting is provided', () => {
-    const renderedComponent = shallow(
-      <ReposList repos={false} error={false} loading={false} />
-    );
-
-    expect(renderedComponent.html()).toEqual(null);
+  it('can render FlightsList', () => {
+    // Test first render and effect
+    const history = createBrowserHistory();
+    const error = false;
+    const loading = false;
+    act(() => {
+      const renderedComponent = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <FlightsList
+              loading={loading}
+              flights={mockFlights}
+              error={error}
+              getFlights={jest.fn()}
+            />
+          </Router>
+        </Provider>,
+      );
+      expect(renderedComponent.find(List).length).toBe(1);
+      expect(renderedComponent.find('.loading-indicator').length).toBe(0);
+    });
   });
 });
-*/

@@ -26,7 +26,7 @@ describe('<List />', () => {
     store = mockStore(initialState);
   });
 
-  it('can render and update a counter', () => {
+  it('can render List, Table and FilterFIeld', () => {
     // Test first render and effect
     act(() => {
       const renderedComponent = mount(
@@ -39,7 +39,7 @@ describe('<List />', () => {
     });
   });
 
-  it('can render and update a counter', () => {
+  it('can render List and click header', () => {
     // Test first render and effect
     const newItems = {
       cheap: items.cheap,

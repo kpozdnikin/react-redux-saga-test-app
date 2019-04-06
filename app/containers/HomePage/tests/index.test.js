@@ -20,7 +20,7 @@ describe('<HomePage />', () => {
     });
     store = mockStore(initialState);
   });
-  it('should render the AllPlansTab', () => {
+  it('should render the HomePage', () => {
     const renderedComponent = mount(
       <Provider store={store}>
         <HomePage />
