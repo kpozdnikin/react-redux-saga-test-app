@@ -7,6 +7,7 @@ import configureStore from 'redux-mock-store';
 import { act } from 'react-dom/test-utils';
 import Table from '@material-ui/core/Table';
 import TextField from '@material-ui/core/TextField';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { initialState as homeReducerState } from '../../../containers/HomePage/reducer';
 import List from '../index';
 import items from '../../../tests/flights';
@@ -52,6 +53,10 @@ describe('<List />', () => {
         </Provider>,
       );
       expect(renderedComponent.find(Table).length).toBe(1);
+      expect(renderedComponent.find(TableSortLabel).length).toBe(5);
+      renderedComponent.find(TableSortLabel).forEach(node => {
+        node.simulate('click');
+      });
     });
   });
 });
