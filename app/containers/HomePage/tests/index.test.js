@@ -1,3 +1,20 @@
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import HomePage from '../HomePage';
+
+describe('<HomePage />', () => {
+  it('should render the repos list', () => {
+    const renderedComponent = shallow(
+      <HomePage loading error={false} repos={[]}/>,
+    );
+    expect(
+      renderedComponent.contains(
+        <ReposList loading error={false} repos={[]}/>,
+      ),
+    ).toEqual(true);
+  });
+})
+
 /*
 /!**
  * Test the HomePage

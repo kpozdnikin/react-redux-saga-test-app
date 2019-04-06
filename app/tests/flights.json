@@ -1,0 +1,272 @@
+{
+  "cheap": [
+    {
+      "id": 7817210975190266000,
+      "departure": "Gobernador Galvez",
+      "arrival": "Villa Adelina",
+      "departureTime": 1554536835256,
+      "arrivalTime": 1554540684340
+    },
+    {
+      "id": 5787164495347038000,
+      "departure": "La Boca",
+      "arrival": "General Roca",
+      "departureTime": 1554532351112,
+      "arrivalTime": 1554540873005
+    },
+    {
+      "id": 911860641831078900,
+      "departure": "Kouba",
+      "arrival": "Barrio Fisherton",
+      "departureTime": 1554532823875,
+      "arrivalTime": 1554535454301
+    },
+    {
+      "id": 1458286475109639200,
+      "departure": "Belen de Escobar",
+      "arrival": "Rouiba",
+      "departureTime": 1554531451912,
+      "arrivalTime": 1554539398850
+    },
+    {
+      "id": 6649319444986074000,
+      "departure": "General Las Heras",
+      "arrival": "Plaza Huincul",
+      "departureTime": 1554534615435,
+      "arrivalTime": 1554535271865
+    },
+    {
+      "id": 6808912812609878000,
+      "departure": "San Isidro de Lules",
+      "arrival": "Bovril",
+      "departureTime": 1554533315526,
+      "arrivalTime": 1554538468601
+    },
+    {
+      "id": 2473179222269979600,
+      "departure": "Ranchos",
+      "arrival": "Calderon",
+      "departureTime": 1554530634549,
+      "arrivalTime": 1554536586055
+    },
+    {
+      "id": 5224010515238155000,
+      "departure": "Sarmiento",
+      "arrival": "Apostoles",
+      "departureTime": 1554533378664,
+      "arrivalTime": 1554537402263
+    },
+    {
+      "id": 8339125296131669000,
+      "departure": "Maipu",
+      "arrival": "Pavon",
+      "departureTime": 1554530565105,
+      "arrivalTime": 1554535395375
+    },
+    {
+      "id": 2082754013676448800,
+      "departure": "La Violeta",
+      "arrival": "Venado Tuerto",
+      "departureTime": 1554537481319,
+      "arrivalTime": 1554542876065
+    },
+    {
+      "id": 7553520677289343000,
+      "departure": "Caleta Olivia",
+      "arrival": "Bella Vista",
+      "departureTime": 1554531670050,
+      "arrivalTime": 1554535528934
+    },
+    {
+      "id": 8151264638978683000,
+      "departure": "Salto",
+      "arrival": "Tapalque",
+      "departureTime": 1554536383872,
+      "arrivalTime": 1554541541208
+    },
+    {
+      "id": 2421052920445228000,
+      "departure": "Rivadavia",
+      "arrival": "Larroque",
+      "departureTime": 1554537804648,
+      "arrivalTime": 1554538180336
+    },
+    {
+      "id": 5688845526757319000,
+      "departure": "Salsipuedes",
+      "arrival": "Laborde",
+      "departureTime": 1554534637839,
+      "arrivalTime": 1554539366043
+    },
+    {
+      "id": 238020507246484480,
+      "departure": "Tacuari",
+      "arrival": "El Trebol",
+      "departureTime": 1554532568539,
+      "arrivalTime": 1554535166910
+    },
+    {
+      "id": 2940173030108719000,
+      "departure": "General Alvear",
+      "arrival": "La Madrid",
+      "departureTime": 1554531505566,
+      "arrivalTime": 1554533596755
+    },
+    {
+      "id": 4174839505797780500,
+      "departure": "Ciudadela",
+      "arrival": "Bernasconi",
+      "departureTime": 1554530541897,
+      "arrivalTime": 1554534691869
+    },
+    {
+      "id": 8290590684496997000,
+      "departure": "San Justo",
+      "arrival": "General Villegas",
+      "departureTime": 1554534124182,
+      "arrivalTime": 1554537796625
+    },
+    {
+      "id": 2886845967911488500,
+      "departure": "San Salvador",
+      "arrival": "San Fernando del Valle de Catamarca",
+      "departureTime": 1554533051017,
+      "arrivalTime": 1554542231958
+    },
+    {
+      "id": 6698534034032406000,
+      "departure": "San Fernando",
+      "arrival": "Morteros",
+      "departureTime": 1554535609139,
+      "arrivalTime": 1554536008974
+    },
+    {
+      "id": 1115172890567681000,
+      "departure": "Chorroarin",
+      "arrival": "Temperley",
+      "departureTime": 1554537408620,
+      "arrivalTime": 1554545358183
+    },
+    {
+      "id": 4878219783197056000,
+      "departure": "Libertad",
+      "arrival": "Crespo",
+      "departureTime": 1554533292625,
+      "arrivalTime": 1554536173819
+    },
+    {
+      "id": 6718117432124898000,
+      "departure": "San Jose",
+      "arrival": "Suipacha",
+      "departureTime": 1554531074218,
+      "arrivalTime": 1554535082206
+    },
+    {
+      "id": 1874014261060013000,
+      "departure": "San Fernando",
+      "arrival": "Villa Elisa",
+      "departureTime": 1554534792193,
+      "arrivalTime": 1554539293387
+    },
+    {
+      "id": 2559714825144696000,
+      "departure": "Villa de Mayo",
+      "arrival": "Vedia",
+      "departureTime": 1554534679820,
+      "arrivalTime": 1554542445953
+    },
+    {
+      "id": 2228158047237260300,
+      "departure": "Diego de Alvear",
+      "arrival": "San Isidro",
+      "departureTime": 1554532104884,
+      "arrivalTime": 1554534266485
+    },
+    {
+      "id": 7775063562197622000,
+      "departure": "Villa Ballester",
+      "arrival": "Villa Las Rosas",
+      "departureTime": 1554530366317,
+      "arrivalTime": 1554533517051
+    },
+    {
+      "id": 6781926327646903000,
+      "departure": "Granadero Baigorria",
+      "arrival": "Ouargla",
+      "departureTime": 1554536422197,
+      "arrivalTime": 1554544496881
+    },
+    {
+      "id": 3196388726116289500,
+      "departure": "Garupa",
+      "arrival": "Palmira",
+      "departureTime": 1554534375845,
+      "arrivalTime": 1554540277651
+    },
+    {
+      "id": 1466495098742599700,
+      "departure": "Montserrat",
+      "arrival": "Las Catitas",
+      "departureTime": 1554528861175,
+      "arrivalTime": 1554537245717
+    },
+    {
+      "id": 5315139529915947000,
+      "departure": "Rocamora",
+      "arrival": "Morteros",
+      "departureTime": 1554535345442,
+      "arrivalTime": 1554541859211
+    },
+    {
+      "id": 3639114255022877700,
+      "departure": "Mar del Tuyu",
+      "arrival": "Tortuguitas",
+      "departureTime": 1554534806960,
+      "arrivalTime": 1554540603066
+    }
+  ],
+  "business": [
+    {
+      "uuid": "4633ad7d-c538-4fb9-8986-1fc56e546c5d",
+      "flight": "Piamonte -> Manuel J. Cobo",
+      "departure": "2019-04-06T07:15:38.545Z",
+      "arrival": "2019-04-06T08:24:04.395Z"
+    },
+    {
+      "uuid": "c768c2c7-ce2f-4d05-8b85-11398227e12d",
+      "flight": "Laguna Alsina -> Caseros",
+      "departure": "2019-04-06T06:30:48.017Z",
+      "arrival": "2019-04-06T08:12:22.230Z"
+    },
+    {
+      "uuid": "43871e86-b984-4d3c-b9c8-5dce3cd1c609",
+      "flight": "Bustinza -> San Fernando",
+      "departure": "2019-04-06T05:58:47.668Z",
+      "arrival": "2019-04-06T06:13:41.004Z"
+    },
+    {
+      "uuid": "c32a64cd-c412-4b28-aa1a-755a5ccb94bf",
+      "flight": "Bordj -> Tio Pujio",
+      "departure": "2019-04-06T05:35:39.843Z",
+      "arrival": "2019-04-06T06:56:40.051Z"
+    },
+    {
+      "uuid": "3b531ce7-ba14-4d70-9f32-fa36e7ab4e1c",
+      "flight": "Manuel J. Cobo -> Rio Grande",
+      "departure": "2019-04-06T06:51:56.489Z",
+      "arrival": "2019-04-06T08:43:25.730Z"
+    },
+    {
+      "uuid": "823cac8c-d958-4bd6-9b3b-d132042bd6ee",
+      "flight": "Villa Maria Grande -> Pedernales",
+      "departure": "2019-04-06T07:46:57.552Z",
+      "arrival": "2019-04-06T09:33:54.242Z"
+    },
+    {
+      "uuid": "a15eb837-39a6-49eb-9742-e622e4dc5b33",
+      "flight": "Los Polvorines -> Canning",
+      "departure": "2019-04-06T06:34:18.049Z",
+      "arrival": "2019-04-06T09:06:25.955Z"
+    }
+  ]
+}
