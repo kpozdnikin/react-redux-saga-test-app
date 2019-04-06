@@ -1,19 +1,42 @@
-/*
 import React from 'react';
-import { shallow } from 'enzyme';
-
+import { mount, configure } from 'enzyme';
+import { fromJS } from 'immutable';
+import Adapter from 'enzyme-adapter-react-16';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { act } from 'react-dom/test-utils';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import FlightForm from '../../../components/FlightForm';
+import { initialState as homeReducerState } from '../../HomePage/reducer';
 import FormCreatePage from '../index';
 
-describe('<FormCreatePage />', () => {
-  it('should render its heading', () => {
-    const renderedComponent = shallow(<FormCreatePage />);
-    expect(renderedComponent.contains(<h1>Features</h1>)).toBe(true);
+configure({ adapter: new Adapter() });
+
+describe('<List />', () => {
+  const middlewares = [];
+  const mockStore = configureStore(middlewares);
+  let store;
+
+  beforeAll(() => {
+    const initialState = fromJS({
+      home: homeReducerState,
+    });
+    store = mockStore(initialState);
   });
 
-  it('should never re-render the component', () => {
-    const renderedComponent = shallow(<FormCreatePage />);
-    const inst = renderedComponent.instance();
-    expect(inst.shouldComponentUpdate()).toBe(false);
+  it('can render and update a counter', () => {
+    // Test first render and effect
+    const history = createBrowserHistory();
+    act(() => {
+      const renderedComponent = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <FormCreatePage />
+          </Router>
+        </Provider>,
+      );
+      expect(renderedComponent.find(FlightForm).length).toBe(1);
+    });
   });
 });
-*/
